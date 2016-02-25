@@ -1,2 +1,3 @@
 #!/bin/bash
-./ffcm -c mcb_c_L.properties
+export PATH=`pwd`:$PATH
+ffcm -c mcb_c_L.properties
