@@ -1,3 +1,2 @@
 #!/bin/bash
-mkdir tmp out
-./ffcm -s mcb_s_L.properties
+./ffcm -mem mcb_s_L.properties

@@ -12,7 +12,7 @@ mkdir -p $p_dir
 go get github.com/Centny/ffcm/ffcm
 go build -o $p_dir/ffcm github.com/Centny/ffcm/ffcm
 #
-cp -f *.sh $p_dir
+cp -f run_*.sh $p_dir
 cp -f *.properties $p_dir
 cp -rf test $p_dir/
 cd $o_dir
