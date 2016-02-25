@@ -1,3 +1,3 @@
 #!/bin/bash
-export PATH=`pwd`:$PATH
-ffcm -mem mcb_s_L.properties
+export PATH=`pwd`:`dirname ${0}`:$PATH
+ffcm -mem mcb_s.properties

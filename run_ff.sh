@@ -1,5 +1,6 @@
 #!/bin/bash
 set -e
+export PATH=`pwd`:`dirname ${0}`:$PATH
 mkdir -p `dirname $7`
 mkdir -p `dirname $8`
 tsize_=`ffcm -d $3 $4 $5 $6`
