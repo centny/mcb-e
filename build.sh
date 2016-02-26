@@ -1,10 +1,12 @@
 #!/bin/bash
 set -e
-o_dir=build
-if [ "$2" != "" ];then
-	o_dir=$2
+if [ "$1" == "" ];then
+	echo "Usage: ./build.sh <linux|win> <cswf.doc location> <cswf.srv location>"
+	exit 1
 fi
-p_dir=$o_dir/mcb-e
+o_dir=build
+pkgn=mcb-e.$1
+p_dir=$o_dir/$pkgn
 rm -rf $o_dir
 mkdir -p $o_dir
 mkdir -p $p_dir
@@ -14,7 +16,11 @@ go build -o $p_dir/ffcm github.com/Centny/ffcm/ffcm
 #
 cp -f run_*.sh $p_dir
 cp -f *.properties $p_dir
+cp -f *.config $p_dir
 cp -rf test $p_dir/
+if [ "$2" != "" ];then
+	cp -rf $2/* $p_dir
+fi
 cd $o_dir
-zip -r mcb-e.zip mcb-e
+zip -r $pkgn.zip $pkgn
 cd ../
