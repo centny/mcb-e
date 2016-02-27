@@ -1,3 +1,3 @@
 #!/bin/bash
 set -e
- ./build.sh  win ../cswf.doc/build/cswf.doc/
+ ./build.sh  $1 ../cswf.doc/build/cswf.doc/

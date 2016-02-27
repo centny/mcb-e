@@ -12,11 +12,11 @@ mkdir -p $o_dir
 mkdir -p $p_dir
 
 go get github.com/Centny/ffcm/ffcm
-go build -o $p_dir/ffcm github.com/Centny/ffcm/ffcm
+go build -o $p_dir/ffcm.exe github.com/Centny/ffcm/ffcm
 #
 cp -f run_*.sh $p_dir
+cp -f run_*.bat $p_dir
 cp -f *.properties $p_dir
-cp -f *.config $p_dir
 cp -rf test $p_dir/
 if [ "$2" != "" ];then
 	cp -rf $2/* $p_dir
