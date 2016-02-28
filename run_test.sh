@@ -50,3 +50,5 @@ rm -rf out/test/pptx_*
 chk_v out/test/pptx_ 1 pptx
 echo
 echo
+#
+echo all test done...
