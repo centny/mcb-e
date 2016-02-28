@@ -1,2 +1,3 @@
-rundll32 user32.dll,LockWorkStation
+@echo off
 bash -c ./run_c.sh
+pause

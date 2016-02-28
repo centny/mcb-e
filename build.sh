@@ -11,11 +11,17 @@ rm -rf $o_dir
 mkdir -p $o_dir
 mkdir -p $p_dir
 
+sys_n=`uname`
+out_n=ffcm
+if [ ${sys_n:0:7} = "MSYS_NT" ];then
+	out_n=ffcm.exe
+fi
 go get github.com/Centny/ffcm/ffcm
-go build -o $p_dir/ffcm.exe github.com/Centny/ffcm/ffcm
+go build -o $p_dir/$out_n github.com/Centny/ffcm/ffcm
 #
 cp -f run_*.sh $p_dir
 cp -f run_*.bat $p_dir
+cp -f do_* $p_dir
 cp -f *.properties $p_dir
 cp -rf test $p_dir/
 if [ "$2" != "" ];then
