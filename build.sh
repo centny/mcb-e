@@ -12,12 +12,16 @@ mkdir -p $o_dir
 mkdir -p $p_dir
 
 sys_n=`uname`
-out_n=ffcm
+ffcm_n=ffcm
+gfs_n=gfs
 if [ ${sys_n:0:7} = "MSYS_NT" ];then
-	out_n=ffcm.exe
+	ffcm_n=ffcm.exe
+	gfs_n=gfs.exe
 fi
 go get github.com/Centny/ffcm/ffcm
-go build -o $p_dir/$out_n github.com/Centny/ffcm/ffcm
+go build -o $p_dir/$ffcm_n github.com/Centny/ffcm/ffcm
+go get github.com/Centny/gfs/gfs
+go build -o $p_dir/$gfs_n github.com/Centny/gfs/gfs
 #
 cp -f run_*.sh $p_dir
 cp -f run_*.bat $p_dir
