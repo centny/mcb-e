@@ -28,6 +28,7 @@ cp -f run_*.bat $p_dir
 cp -f do_* $p_dir
 cp -f *.properties $p_dir
 cp -rf test $p_dir/
+cp -f *.sublime-project $p_dir/
 if [ "$2" != "" ];then
 	cp -rf $2/* $p_dir
 fi

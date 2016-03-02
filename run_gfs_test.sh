@@ -1,54 +1,40 @@
 #!/bin/bash
-chk_v(){
-	tc=`ls -l $1* 2>/dev/null| wc -l`
-	if [ $tc -ge $2 ];then
-		echo test $3 success
-	else
-		echo waiting $3 result...
-		sleep 3
-		chk_v $1 $2 $3
-	fi
-}
 #
+set -e
 tip=$1
 if [ "$tip" = "" ];then
 	tip=127.0.0.1
 fi
 echo running test to server $tip
+rm -rf out/www/*
 #
 echo Test Video...
-rm -rf out/test/xx_*
-./gfs -u http://127.0.0.1:2325/ test/xx.mp4
-chk_v out/test/xx_ 2 video
+./gfs -u http://127.0.0.1:2325 test/xx.mp4
+./wait_fc.sh "out/www/*" 2 video
 echo
 echo
-exit
 #
 echo Test docx...
-rm -rf out/test/docx_*
-./ffcm -g http://127.0.0.1:2325/addTask?args=test/xx.docx,test/docx
-chk_v out/test/docx_ 7 docx
+./gfs -u http://127.0.0.1:2325 test/xx.docx
+./wait_fc.sh "out/www/*" 9 docx
 echo
 echo
 #
 echo Test pdfx...
-rm -rf out/test/pdfx_*
-./ffcm -g http://127.0.0.1:2325/addTask?args=test/xx.pdf,test/pdfx
-chk_v out/test/pdfx_ 6 pdfx
+./gfs -u http://127.0.0.1:2325 test/xx.pdf
+./wait_fc.sh "out/www/*" 15 pdfx
 echo
 echo
 #
 echo Test xlsx...
-rm -rf out/test/xlsx_*
-./ffcm -g http://127.0.0.1:2325/addTask?args=test/xx.xlsx,test/xlsx
-chk_v out/test/xlsx_ 22 xlsx
+./gfs -u http://127.0.0.1:2325 test/xx.xlsx
+./wait_fc.sh "out/www/*" 37 xlsx
 echo
 echo
 #
 echo Test pptx...
-rm -rf out/test/pptx_*
-./ffcm -g http://127.0.0.1:2325/addTask?args=test/xx.pptx,test/pptx
-chk_v out/test/pptx_ 1 pptx
+./gfs -u http://127.0.0.1:2325 test/xx.pptx
+./wait_fc.sh "out/www/*" 38 pptx
 echo
 echo
 #
