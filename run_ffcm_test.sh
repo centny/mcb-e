@@ -51,4 +51,11 @@ chk_v out/test/pptx_ 1 pptx
 echo
 echo
 #
+echo Test png...
+rm -rf out/test/png*
+./ffcm -g http://127.0.0.1:2325/addTask?args=test/xx.jpg,test/png
+chk_v out/test/png 1 png
+echo
+echo
+#
 echo all test done...
