@@ -4,6 +4,7 @@ if [ "$1" == "" ];then
 	echo "Usage: ./build.sh <linux|win> <cswf.doc location> <cswf.srv location>"
 	exit 1
 fi
+o_pwd=`pwd`
 o_dir=build
 pkgn=mcb-e.$1
 p_dir=$o_dir/$pkgn
@@ -29,9 +30,20 @@ cp -f do_* $p_dir
 cp -f *.properties $p_dir
 cp -rf test $p_dir/
 cp -f *.sublime-project $p_dir/
-if [ "$2" != "" ];then
-	cp -rf $2/* $p_dir
-fi
+#
+#build cswf.ffcm
+cd ../cswf.ffcm
+cmd /c pkg.bat
+cd $o_pwd
+cp -f ../cswf.ffcm/build/cswf.ffcm/cswf-* $p_dir
+cp -f ../cswf.ffcm/build/cswf.ffcm/io.vty.cswf.ffcm.dll $p_dir
+#
+#build cswf.doc
+cd ../cswf.doc
+cmd /c pkg.bat
+cd $o_pwd
+cp -rf ../cswf.doc/build/cswf.doc/* $p_dir
+
 cd $o_dir
 zip -r $pkgn.zip $pkgn
 cd ../
