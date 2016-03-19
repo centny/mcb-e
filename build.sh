@@ -30,18 +30,22 @@ cp -f *.properties $p_dir
 cp -rf test $p_dir/sdata_i/
 cp -f *.sublime-project $p_dir/
 #
-#build cswf.ffcm
-cd ../cswf.ffcm
-cmd /c pkg.bat
-cd $o_pwd
-cp -f ../cswf.ffcm/build/cswf.ffcm/cswf-* $p_dir
-cp -f ../cswf.ffcm/build/cswf.ffcm/io.vty.cswf.ffcm.dll $p_dir
 #
-#build cswf.doc
-cd ../cswf.doc
-cmd /c pkg.bat
-cd $o_pwd
-cp -rf ../cswf.doc/build/cswf.doc/* $p_dir
+if [ ${sys_n:0:7} = "MSYS_NT" ];then
+	#
+	#build cswf.ffcm
+	cd ../cswf.ffcm
+	cmd /c pkg.bat
+	cd $o_pwd
+	cp -f ../cswf.ffcm/build/cswf.ffcm/cswf-* $p_dir
+	cp -f ../cswf.ffcm/build/cswf.ffcm/io.vty.cswf.ffcm.dll $p_dir
+	#
+	#build cswf.doc
+	cd ../cswf.doc
+	cmd /c pkg.bat
+	cd $o_pwd
+	cp -rf ../cswf.doc/build/cswf.doc/* $p_dir
+fi
 
 cd $o_dir
 zip -r $pkgn.zip $pkgn
