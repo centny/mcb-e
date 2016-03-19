@@ -33,14 +33,15 @@ cp -f *.sublime-project $p_dir/
 #
 if [ ${sys_n:0:7} = "MSYS_NT" ];then
 	#
-	#build cswf.ffcm
+	echo build cswf.ffcm
 	cp -f ../cswf.ffcm/build/cswf.ffcm/cswf-* $p_dir
 	cp -f ../cswf.ffcm/build/cswf.ffcm/io.vty.cswf.ffcm.dll $p_dir
 	#
-	#build cswf.doc
+	echo build cswf.doc
 	cp -rf ../cswf.doc/build/cswf.doc/* $p_dir
 fi
 
+echo packaging...
 cd $o_dir
 zip -r $pkgn.zip $pkgn
 cd ../
