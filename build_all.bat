@@ -1,5 +1,5 @@
 @echo off
-VsMsBuildCmd.bat
+call VsMsBuildCmd.bat
 cd ..\cswf.ffcm
 call pkg.bat
 cd ..\cswf.doc
