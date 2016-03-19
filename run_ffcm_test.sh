@@ -17,44 +17,44 @@ fi
 echo running test to server $tip
 #
 echo Test Video...
-rm -rf out/test/xx_*
+rm -rf sdata_o/test/xx*
 ./ffcm -g http://127.0.0.1:2325/addTask?args=test/xx.mp4
-chk_v out/test/xx_ 2 video
+chk_v sdata_o/test/xx/ 2 video
 echo
 echo
 #
 echo Test docx...
-rm -rf out/test/docx_*
+rm -rf sdata_o/test/docx*
 ./ffcm -g http://127.0.0.1:2325/addTask?args=test/xx.docx,test/docx
-chk_v out/test/docx_ 7 docx
+chk_v sdata_o/test/docx/d 7 docx
 echo
 echo
 #
 echo Test pdfx...
-rm -rf out/test/pdfx_*
+rm -rf sdata_o/test/pdfx*
 ./ffcm -g http://127.0.0.1:2325/addTask?args=test/xx.pdf,test/pdfx
-chk_v out/test/pdfx_ 6 pdfx
+chk_v sdata_o/test/pdfx/d 6 pdfx
 echo
 echo
 #
 echo Test xlsx...
-rm -rf out/test/xlsx_*
+rm -rf sdata_o/test/xlsx*
 ./ffcm -g http://127.0.0.1:2325/addTask?args=test/xx.xlsx,test/xlsx
-chk_v out/test/xlsx_ 22 xlsx
+chk_v sdata_o/test/xlsx/d 22 xlsx
 echo
 echo
 #
 echo Test pptx...
-rm -rf out/test/pptx_*
+rm -rf sdata_o/test/pptx*
 ./ffcm -g http://127.0.0.1:2325/addTask?args=test/xx.pptx,test/pptx
-chk_v out/test/pptx_ 1 pptx
+chk_v sdata_o/test/pptx/d 1 pptx
 echo
 echo
 #
 echo Test png...
-rm -rf out/test/png*
+rm -rf sdata_o/test/png*
 ./ffcm -g http://127.0.0.1:2325/addTask?args=test/xx.jpg,test/png
-chk_v out/test/png 1 png
+chk_v sdata_o/test/png 1 png
 echo
 echo
 #

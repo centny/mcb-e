@@ -1,5 +1,20 @@
 #!/bin/bash
 set -e
+if [ $# -lt 9 ];then
+	echo "bad arguments"
+	exit 1
+fi
+echo run_ff arguments list:
+echo '  '$1
+echo '  '$2
+echo '  '$3
+echo '  '$4
+echo '  '$5
+echo '  '$6
+echo '  '$7
+echo '  '$8
+echo '  '$9
+echo
 export PATH=`pwd`:`dirname ${0}`:$PATH
 mkdir -p `dirname $7`
 mkdir -p `dirname $8`

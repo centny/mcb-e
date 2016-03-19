@@ -10,7 +10,7 @@ pkgn=mcb-e.$1
 p_dir=$o_dir/$pkgn
 rm -rf $o_dir
 mkdir -p $o_dir
-mkdir -p $p_dir
+mkdir -p $p_dir/sdata_i
 
 sys_n=`uname`
 ffcm_n=ffcm
@@ -24,11 +24,10 @@ go build -o $p_dir/$ffcm_n github.com/Centny/ffcm/ffcm
 go get github.com/Centny/gfs/gfs
 go build -o $p_dir/$gfs_n github.com/Centny/gfs/gfs
 #
-cp -f run_*.sh $p_dir
-cp -f run_*.bat $p_dir
-cp -f do_* $p_dir
+cp -f *.sh $p_dir
+cp -f *.bat $p_dir
 cp -f *.properties $p_dir
-cp -rf test $p_dir/
+cp -rf test $p_dir/sdata_i/
 cp -f *.sublime-project $p_dir/
 #
 #build cswf.ffcm
