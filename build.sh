@@ -23,6 +23,7 @@ go get github.com/Centny/ffcm/ffcm
 go build -o $p_dir/$ffcm_n github.com/Centny/ffcm/ffcm
 go get github.com/Centny/gfs/gfs
 go build -o $p_dir/$gfs_n github.com/Centny/gfs/gfs
+go build -o $p_dir/igtest ./igtest
 #
 cp -f *.sh $p_dir
 cp -f *.bat $p_dir

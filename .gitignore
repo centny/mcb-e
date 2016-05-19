@@ -5,3 +5,5 @@ tmp
 logs
 *.bak
 *.sublime-workspace
+
+test
