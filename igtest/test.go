@@ -79,6 +79,7 @@ func main() {
 	gfsdb.C = mgo.C
 	files := map[string][]string{}
 	shas := []string{}
+	// shaed := map[string]bool{}
 	max := 0
 	util.ListFunc(paths[0], reg, func(t string) string {
 		ss, err := os.Stat(t)
@@ -88,13 +89,20 @@ func main() {
 		if ss.IsDir() {
 			return t
 		}
+		sha, err := util.Sha1(t)
+		if err != nil {
+			return t
+		}
+		// if shas[sha] {
+		// 	return t
+		// }
 		key := filepath.Ext(t)
 		files[key] = append(files[key], t)
-		sha, _ := util.Sha1(t)
 		shas = append(shas, sha)
 		if len(files[key]) > max {
 			max = len(files[key])
 		}
+		// shaed[sha] = true
 		fmt.Println(sha, "->", t)
 		return t
 	})
@@ -234,7 +242,7 @@ func run(files map[string][]string, idx int, tmp string) error {
 				return err
 			}
 		}
-		log.D("upload file success by result->\n%v\n", util.S2Json(res))
+		log.D("upload file(%v) success by result->\n%v\n", fs[idx], util.S2Json(res))
 	}
 	log.D("test upload %v file success", len(pubs))
 	//
