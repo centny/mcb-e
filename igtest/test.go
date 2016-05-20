@@ -234,6 +234,7 @@ func run(files map[string][]string, idx int, tmp string) error {
 				return err
 			}
 		}
+		log.D("upload file success by result->\n%v\n", util.S2Json(res))
 	}
 	log.D("test upload %v file success", len(pubs))
 	//
