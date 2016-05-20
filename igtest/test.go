@@ -95,7 +95,7 @@ func main() {
 		if len(files[key]) > max {
 			max = len(files[key])
 		}
-		fmt.Println(sha, "---->")
+		fmt.Println(sha, "->", t)
 		return t
 	})
 	if len(files) < 1 {
