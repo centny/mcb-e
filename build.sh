@@ -30,6 +30,7 @@ cp -f *.bat $p_dir
 cp -f *.properties $p_dir
 cp -rf test $p_dir/sdata_i/
 cp -f *.sublime-project $p_dir/
+cp -f *.ps1 $p_dir
 #
 #
 if [ ${sys_n:0:7} = "MSYS_NT" ];then
