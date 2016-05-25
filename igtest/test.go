@@ -313,7 +313,7 @@ func wait_i(marks, pubs map[string]string, tmp string) error {
 			return err
 		}
 		log.D("%v/%v info is->\n%v", exts[i], pubs[exts[i]], util.S2Json(res))
-		if len(res.StrValP("/base/info/img/files")) < 1 || len(res.StrValP("/base/info/small/files")) < 1 {
+		if res.IntValP("/base/info/img/count") < 1 || res.IntValP("/base/info/small/count") < 1 {
 			time.Sleep(2 * time.Second)
 			continue
 		}
