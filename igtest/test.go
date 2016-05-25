@@ -273,6 +273,10 @@ func run(files map[string][]string, idx int, tmp string) error {
 	if err != nil {
 		return err
 	}
+	err = wait_i(marks, pubs, tmp)
+	if err != nil {
+		return err
+	}
 	err = wait_d(marks, pubs, v_doc_reg, "D_docx", tmp)
 	if err != nil {
 		return err
@@ -285,6 +289,50 @@ func run(files map[string][]string, idx int, tmp string) error {
 	if err != nil {
 		return err
 	}
+	return nil
+}
+
+func wait_i(marks, pubs map[string]string, tmp string) error {
+	log.D("test wait image....")
+	exts := []string{}
+	for ext, _ := range marks {
+		if v_img_reg.MatchString(ext) {
+			exts = append(exts, ext)
+		}
+	}
+	if len(exts) < 1 {
+		log.D("test wait image done with not image task found")
+		return nil
+	}
+	for i := 0; i < len(exts); {
+		log.D("waiting %v/%v done", exts[i], pubs[exts[i]])
+		res, err := gfsapi.DoInfo("", "", "", marks[exts[i]], "")
+		if err != nil {
+			err = util.Err("do get file info by mark(%v) error->%v", marks[exts[i]], err)
+			log.E("%v", err)
+			return err
+		}
+		log.D("%v/%v info is->\n%v", exts[i], pubs[exts[i]], util.S2Json(res))
+		if len(res.StrValP("/base/info/img/files")) < 1 || len(res.StrValP("/base/info/small/files")) < 1 {
+			time.Sleep(2 * time.Second)
+			continue
+		}
+		tf := tmp + "/" + util.UUID()
+		err = util.DLoad(tf, "%v/img", pubs[exts[i]])
+		if err != nil {
+			err = util.Err("download %v/img error->%v", pubs[exts[i]], err)
+			return err
+		}
+		tf = tmp + "/" + util.UUID()
+		err = util.DLoad(tf, "%v/small", pubs[exts[i]])
+		if err != nil {
+			err = util.Err("download %v/small error->%v", pubs[exts[i]], err)
+			return err
+		}
+		log.D("%v/%v done success", exts[i], pubs[exts[i]])
+		i++
+	}
+	log.D("test wait image done with %v success....", len(exts))
 	return nil
 }
 
