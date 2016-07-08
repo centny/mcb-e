@@ -13,7 +13,7 @@ rm -f $5
 echo
 echo
 echo "----------------result----------------"
-echo "[text]"
-echo $6
-echo "[/text]"
+echo "[json]"
+echo '{"count":1,"files":["'$6'"],"src":"'$1'"}'
+echo "[/json]"
 echo
