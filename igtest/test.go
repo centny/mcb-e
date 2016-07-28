@@ -79,6 +79,7 @@ func main() {
 	gfsdb.C = mgo.C
 	files := map[string][]string{}
 	shas := []string{}
+	shas_m := map[string]bool{}
 	// shaed := map[string]bool{}
 	max := 0
 	util.ListFunc(paths[0], reg, func(t string) string {
@@ -93,6 +94,10 @@ func main() {
 		if err != nil {
 			return t
 		}
+		if shas_m[sha] {
+			return t
+		}
+		shas_m[sha] = true
 		// if shas[sha] {
 		// 	return t
 		// }
