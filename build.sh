@@ -24,6 +24,7 @@ go build -o $p_dir/$ffcm_n github.com/Centny/ffcm/ffcm
 go get github.com/Centny/gfs/gfs
 go build -o $p_dir/$gfs_n github.com/Centny/gfs/gfs
 go build -o $p_dir/igtest ./igtest
+go build -o $p_dir/update_small ./update_small.go
 #
 cp -f *.sh $p_dir
 cp -f *.bat $p_dir
