@@ -20,6 +20,7 @@ mkdir -p $dst_d
 mkdir -p $tmp_d
 tsize_=ffcm -d $args[2] $args[3] $args[4] $args[5]
 ffmpeg -progress $args[0] -i $args[1] -s $tsize_ -y $args[6]
+ffcm -verify $1 $6
 echo 'do copy '+$args[6]+' to '+$args[7]
 copy -f $args[6] $args[7]
 echo 'do remove tmp file '+$args[6]
