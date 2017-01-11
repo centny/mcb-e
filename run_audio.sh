@@ -1,15 +1,15 @@
 #!/bin/bash
 set -e
 export PATH=`pwd`:`dirname ${0}`:$PATH
-mkdir -p `dirname $5`
+mkdir -p `dirname $3`
 mkdir -p `dirname $2`
-convert $1 -resize \>$3x$4 $5
-cp -f $5 $2
-rm -f $5
+ffmpeg -i $1 $3
+cp -f $3 $2
+rm -f $3
 echo
 echo
 echo "----------------result----------------"
 echo "[json]"
-echo '{"count":1,"files":["'$6'"],"src":"'$1'"}'
+echo '{"count":1,"files":["'$4'"],"src":"'$1'"}'
 echo "[/json]"
 echo
