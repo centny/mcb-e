@@ -3,7 +3,7 @@ set -e
 export PATH=`pwd`:`dirname ${0}`:$PATH
 mkdir -p `dirname $3`
 mkdir -p `dirname $2`
-ffmpeg -i $1 $3
+ffmpeg -i $1 -write_xing 0 $3
 cp -f $3 $2
 rm -f $3
 echo
