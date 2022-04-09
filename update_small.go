@@ -2,11 +2,13 @@ package main
 
 import (
 	"fmt"
+	"os"
+
 	"github.com/Centny/dbm/mgo"
+	_ "github.com/Centny/ffcm"
 	"github.com/Centny/gfs/gfsdb"
 	"github.com/Centny/gwf/log"
 	"gopkg.in/mgo.v2/bson"
-	"os"
 )
 
 func main() {

@@ -19,10 +19,8 @@ if [ ${sys_n:0:7} = "MSYS_NT" ];then
 	ffcm_n=ffcm.exe
 	gfs_n=gfs.exe
 fi
-go get github.com/Centny/ffcm/ffcm
 go build -o $p_dir/$ffcm_n github.com/Centny/ffcm/ffcm
 if [ ${sys_n:0:7} != "MSYS_NT" ];then
-	go get github.com/Centny/gfs/gfs
 	go build -o $p_dir/$gfs_n github.com/Centny/gfs/gfs
 	go build -o $p_dir/igtest ./igtest
 	go build -o $p_dir/update_small ./update_small.go
